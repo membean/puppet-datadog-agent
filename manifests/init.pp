@@ -547,7 +547,7 @@ class datadog_agent(
       }
     }
 
-    if ($apm_enabled == true) and $apm_ignore_resources_enabled {
+    if ($apm_enabled == true) and ( $apm_ignore_resources_enabled == true ) {
       concat::fragment{ 'datadog apm ignore resources':
         target  => '/etc/dd-agent/datadog.conf',
         content => template('datadog_agent/datadog_apm_ignore_resources.conf.erb'),
