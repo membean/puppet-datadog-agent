@@ -535,13 +535,21 @@ class datadog_agent(
     concat::fragment{ 'datadog footer':
       target  => '/etc/dd-agent/datadog.conf',
       content => template('datadog_agent/datadog_footer.conf.erb'),
-      order   => '05',
+      order   => '04',
     }
 
     if ($extra_template != '') {
       concat::fragment{ 'datadog extra_template footer':
         target  => '/etc/dd-agent/datadog.conf',
         content => template($extra_template),
+        order   => '05',
+      }
+    }
+
+    if ($apm_enabled == true) and $apm_ignore_resources {
+      concat::fragment{ 'datadog apm ignore resources':
+        target  => '/etc/dd-agent/datadog.conf',
+        content => template('datadog_agent/datadog_apm_ignore_resources.conf.erb'),
         order   => '06',
       }
     }
