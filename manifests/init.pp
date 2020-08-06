@@ -320,7 +320,7 @@ class datadog_agent(
   Boolean $container_collect_all = $datadog_agent::params::container_collect_all,
   Hash[String[1], Data] $agent_extra_options = {},
   Optional[String] $agent_repo_uri = undef,
-  Optional[Boolean] $use_apt_Array backup_keyserver = $datadog_agent::params::use_apt_backup_keyserver,
+  Optional[Boolean] $use_apt_backup_keyserver = $datadog_agent::params::use_apt_backup_keyserver,
   String $apt_backup_keyserver = $datadog_agent::params::apt_backup_keyserver,
   String $apt_keyserver = $datadog_agent::params::apt_keyserver,
   String $apt_release = $datadog_agent::params::apt_default_release,
