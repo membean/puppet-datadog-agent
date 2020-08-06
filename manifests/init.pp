@@ -311,6 +311,7 @@ class datadog_agent(
   Boolean $apm_non_local_traffic = false,
   Optional[Hash[String, Float[0, 1]]] $apm_analyzed_spans = undef,
   Optional[Hash[String, Data]] $apm_obfuscation = undef,
+  Boolean $apm_ignore_resources_enabled = false,
   Array $apm_ignore_resources = [],
   Boolean $process_enabled = $datadog_agent::params::process_default_enabled,
   Boolean $scrub_args = $datadog_agent::params::process_default_scrub_args,
@@ -546,7 +547,7 @@ class datadog_agent(
       }
     }
 
-    if ($apm_enabled == true) and $apm_ignore_resources {
+    if ($apm_enabled == true) and $apm_ignore_resources_enabled {
       concat::fragment{ 'datadog apm ignore resources':
         target  => '/etc/dd-agent/datadog.conf',
         content => template('datadog_agent/datadog_apm_ignore_resources.conf.erb'),
