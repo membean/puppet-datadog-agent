@@ -1,6 +1,6 @@
 <% if @apm_ignore_resources -%>
   ignore_resources:
-<% @apm_ignore_resources .each do | value | -%>
+<% @apm_ignore_resources.each do | value | -%>
     - <%= value %>
 <% end %>
 <% end -%>
