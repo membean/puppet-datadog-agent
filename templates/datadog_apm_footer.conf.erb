@@ -1,3 +1,9 @@
+<% if @apm_ignored_resources -%>
+  ignore_resources:
+<% @apm_ignored_resources .each do | value | -%>
+    - <%= value %>
+<% end %>
+<% end -%>
 <% if not @apm_env.empty? -%>
 [trace.agent]
 env: <%= @apm_env %>
